@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import React from 'react'
+import { Box, Container, Grid, Typography } from '@mui/material'
 //still need to figure out how to get the footer to the bottom of the page
 function Footer(props) {
 	return (
@@ -29,7 +29,7 @@ function Footer(props) {
 				</Grid>
 			</Container>
 		</Box>
-	);
+	)
 }
 
-export default Footer;
+export default Footer
