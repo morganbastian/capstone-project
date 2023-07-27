@@ -1,0 +1,52 @@
+[
+	{
+		"id": 1,
+		"boatId": 2,
+		"charterId": 1
+	},
+    {
+		"id": 2,
+		"boatId": 2,
+		"charterId": 2
+	},
+    {
+		"id": 3,
+		"boatId": 1,
+		"charterId": 3
+	},
+    {
+		"id": 4,
+		"boatId": 2,
+		"charterId": 4
+	},
+    {
+		"id": 5,
+		"boatId": 1,
+		"charterId": 5
+	},
+    {
+		"id": 6,
+		"boatId": 1,
+		"charterId": 6
+	},
+    {
+		"id": 7,
+		"boatId": 2,
+		"charterId": 7
+	},
+    {
+		"id": 8,
+		"boatId": 1,
+		"charterId": 8
+	},
+    {
+		"id": 9,
+		"boatId": 2,
+		"charterId": 9
+	},
+    {
+		"id": 10,
+		"boatId": 2,
+		"charterId": 10
+	}
+]
