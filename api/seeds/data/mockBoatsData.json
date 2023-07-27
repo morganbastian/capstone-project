@@ -1,0 +1,62 @@
+[
+	{
+		"id": 1,
+		"name": "The Pleasant Lady",
+		"description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+		"capacity": 6
+	},
+	{
+		"id": 2,
+		"name": "Eco-Tour",
+		"description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+		"capacity": 20
+	},
+	{
+		"id": 3,
+		"name": "Yacero",
+		"description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+		"capacity": 2
+	},
+	{
+		"id": 4,
+		"name": "Plajo",
+		"description": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+		"capacity": 5
+	},
+	{
+		"id": 5,
+		"name": "Yakidoo",
+		"description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+		"capacity": 2
+	},
+	{
+		"id": 6,
+		"name": "Lazz",
+		"description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+		"capacity": 8
+	},
+	{
+		"id": 7,
+		"name": "Edgepulse",
+		"description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+		"capacity": 6
+	},
+	{
+		"id": 8,
+		"name": "Linkbridge",
+		"description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+		"capacity": 6
+	},
+	{
+		"id": 9,
+		"name": "Gigazoom",
+		"description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+		"capacity": 9
+	},
+	{
+		"id": 10,
+		"name": "Dabtype",
+		"description": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+		"capacity": 3
+	}
+]
