@@ -11,6 +11,7 @@ exports.up = function(knex) {
       table.integer('passengers').notNullable();
       table.date('date').notNullable();
       table.time('time').notNullable();
+      table.boolean('isCompleted').notNullable();
     })
   };
   

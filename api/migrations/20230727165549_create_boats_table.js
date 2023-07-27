@@ -8,6 +8,7 @@
       table.increments('id').primary();
       table.integer('capacity').notNullable();
       table.string('description', 255);
+      table.string('name', 150);
     })
   };
   
