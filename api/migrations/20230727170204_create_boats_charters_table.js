@@ -2,14 +2,12 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-// Creates users table
+// Creates boats_charters table
 exports.up = function(knex) {
-    return knex.schema.createTable('timeslots', function(table) {
+    return knex.schema.createTable('boats_charters', function(table) {
       table.increments('id').primary();
+      table.integer('boatId').notNullable().references('id').inTable('boats').onDelete('CASCADE');
       table.integer('charterId').notNullable().references('id').inTable('charters').onDelete('CASCADE');
-      table.date('weekDay').notNullable();
-      table.time('startTime').notNullable();
-      table.time('endTime').notNullable();
     })
   };
   
@@ -17,7 +15,7 @@ exports.up = function(knex) {
    * @param { import("knex").Knex } knex
    * @returns { Promise<void> }
    */
-  // drops users table
+  // drops boats_charters table
   exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('timeslots')
+      return knex.schema.dropTableIfExists('boats_charters')
   };

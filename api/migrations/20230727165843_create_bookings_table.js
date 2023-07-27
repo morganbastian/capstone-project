@@ -2,9 +2,9 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-// Creates reports table
+// Creates bookings table
 exports.up = function(knex) {
-    return knex.schema.createTable('reports', function(table) {
+    return knex.schema.createTable('bookings', function(table) {
       table.increments('id').primary();
       table.integer('userId').notNullable().references('id').inTable('users').onDelete('CASCADE');
       table.integer('boatId').notNullable().references('id').inTable('boats').onDelete('CASCADE');
@@ -18,7 +18,7 @@ exports.up = function(knex) {
    * @param { import("knex").Knex } knex
    * @returns { Promise<void> }
    */
-  // drops reports table
+  // drops bookings table
   exports.down = function(knex) {
-      return knex.schema.dropTableIfExists('reports')
+      return knex.schema.dropTableIfExists('bookings')
   };

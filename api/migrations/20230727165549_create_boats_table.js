@@ -2,8 +2,8 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-// Creates users table
-exports.up = function(knex) {
+// Creates boats table
+    exports.up = function(knex) {
     return knex.schema.createTable('boats', function(table) {
       table.increments('id').primary();
       table.integer('capacity').notNullable();
@@ -15,7 +15,7 @@ exports.up = function(knex) {
    * @param { import("knex").Knex } knex
    * @returns { Promise<void> }
    */
-  // drops users table
+  // drops boats table
   exports.down = function(knex) {
     return knex.schema.dropTableIfExists('boats')
   };
