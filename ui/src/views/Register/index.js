@@ -106,44 +106,11 @@ function Register(props) {
           </Grid>
           <Grid item xs={8}>
             <label>
-              First Name:
-              <input
-                type="text"
-                name="firstname"
-                value={userData.firstname}
-                onChange={handleChange}
-              />
-            </label>
-          </Grid>
-          <Grid item xs={8}>
-            <label>
-              Last Name:
-              <input
-                type="text"
-                name="lastname"
-                value={userData.lastname}
-                onChange={handleChange}
-              />
-            </label>
-          </Grid>
-          <Grid item xs={8}>
-            <label>
               Email:
               <input
                 type="text"
                 name="email"
                 value={userData.email}
-                onChange={handleChange}
-              />
-            </label>
-          </Grid>
-          <Grid item xs={8}>
-            <label>
-              Zip Code:
-              <input
-                type="text"
-                name="zipcode"
-                value={userData.zipcode}
                 onChange={handleChange}
               />
             </label>
