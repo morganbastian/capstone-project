@@ -1,8 +1,8 @@
-import { Grid, Typography} from "@mui/material";
+import { Grid, Typography, Button} from "@mui/material";
 import { login } from "../../utility/api";
 import { setToken } from "../../utility/utils";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login(props) {
   const [userData, setUserdata] = useState({
@@ -78,6 +78,11 @@ function Login(props) {
             </label>
           </Grid>
           <input type="submit" value="Submit" />
+          <Link to='/register'>
+        <Button>
+            Register
+        </Button>
+      </Link>
         </form>
         <div>{checkLoginError()}</div>
       </Grid>
