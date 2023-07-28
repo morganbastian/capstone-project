@@ -7,10 +7,8 @@ import { useNavigate } from "react-router-dom";
 function Register(props) {
   const [userData, setUserdata] = useState({
     username: "",
-    firstname: "",
-    lastname: "",
+   
     email: "",
-    zipcode: "",
     password: "",
   });
   const [validationErrorArray, setValidationErrorArray] = useState([]);
@@ -26,21 +24,6 @@ function Register(props) {
     const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (userData.username.length < 3) {
       const errorMsg = "Please enter a username with more than 3 characters";
-      validationArray.push(errorMsg)
-    }
-    //check if a fist name is inputted
-     if (userData.firstname.length === 0) {
-      const errorMsg = "Please enter firstname";
-      validationArray.push(errorMsg)
-    }
-    // check if last name is inputted
-     if (userData.lastname.length === 0) {
-      const errorMsg = "Please enter lastname";
-      validationArray.push(errorMsg)
-    }
-    //check if zipcode is valid
-     if (userData.zipcode.length < 5) {
-      const errorMsg = "Please enter valid zipcode";
       validationArray.push(errorMsg)
     }
     //check password meets requirments
