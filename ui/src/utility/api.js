@@ -157,3 +157,9 @@ export const deleteUserBooking = async (id) => {
 
 	return responseData
 }
+
+export const getAllBoats = async () => {
+	const response = await fetch(`${baseUrl}/boats/`)
+	const responseData = await response.json()
+	return responseData
+  }
