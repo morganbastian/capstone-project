@@ -3,7 +3,6 @@ require('dotenv').config()
 const {
 	findAllBookings,
 	findBookingById,
-	addNewBooking,
 	findBookingByUserId,
 	modifyUserBookings,
 	destroyUserBooking,

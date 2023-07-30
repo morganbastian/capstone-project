@@ -62,17 +62,17 @@ function Booking(props) {
 		}
 		createNewBooking(bookingData)
 	}
-	// if (!fetchData) {
-	// 	return <>Loading..</>
-	// }
+	if (!user) {
+		return <>Loading..</>
+	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
 			<FormControl fullWidth>
 				<InputLabel id='boat-label'>Choose Your Charter</InputLabel>
 				<Select
 					labelId='boat-label'
-					id='ongoing'
-					label='ongoing'
+					id='boatId'
+					label='boatId s'
 					onChange={(e) => setBoatId(e.target.value)}
 				>
 					<MenuItem value={(boatId.id)}>Harbor Cruise</MenuItem>
@@ -84,9 +84,9 @@ function Booking(props) {
 			<FormControl fullWidth>
 				<InputLabel id='time-label'>Choose your time slot</InputLabel>
 				<Select
-					labelId='boat-label'
-					id='ongoing'
-					label='ongoing'
+					labelId='time-label'
+					id='time'
+					label='time'
 					onChange={(e) => setTime(e.target.value)}
 				>
 					<MenuItem value={(time)}>1:00PM-4:00PM</MenuItem>
