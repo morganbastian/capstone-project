@@ -34,7 +34,7 @@ exports.showBookingByUserId = async (req, res) => {
 			return res.status(404).json('No User Found')
 		}
 
-		return res.json(foundReport)
+		return res.json(foundBooking)
 	} catch (error) {
 		console.log(error)
 		return res.status(500).json()
