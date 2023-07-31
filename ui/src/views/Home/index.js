@@ -40,7 +40,10 @@ function Home(props) {
 					other! Book your next experience with Shem Creek Charter Company, and
 					get ready to see Charleston in a whole new light!
 				</Typography>
-				<Link to='/bookings/new' style={{ textDecoration: 'none', color: 'white' }}>
+				<Link
+					to='/bookings/new'
+					style={{ textDecoration: 'none', color: 'white' }}
+				>
 					<Button variant='contained'>Book Now</Button>
 				</Link>
 			</Box>
@@ -66,7 +69,10 @@ function Home(props) {
 					vulputate, suscipit velit ut, rutrum nisi. Cras pulvinar sapien id
 					pretium viverra.
 				</Typography>
-				<Link to='/bookings/new' style={{ textDecoration: 'none', color: 'white' }}>
+				<Link
+					to='/bookings/new'
+					style={{ textDecoration: 'none', color: 'white' }}
+				>
 					<Button variant='contained'>Book Now</Button>
 				</Link>
 			</Box>

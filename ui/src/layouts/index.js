@@ -1,7 +1,7 @@
-import { Paper } from '@mui/material';
-import { Outlet } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { Paper } from '@mui/material'
+import { Outlet } from 'react-router-dom'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 const Layout = (props) => {
 	return (
@@ -11,7 +11,7 @@ const Layout = (props) => {
 			{/* Outlet is not a “real” Component, it is imported from react-router-dom. it will be replaced by the element rendered by the route */}
 			<Footer />
 		</Paper>
-	);
-};
+	)
+}
 
-export default Layout;
+export default Layout
