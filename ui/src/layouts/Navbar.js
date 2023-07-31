@@ -129,7 +129,7 @@ function Navbar() {
 								color: 'white',
 							}}
 						>
-							<Link to='/bookings' style={{ textDecoration: 'none' }}>
+							<Link to='/bookings/new' style={{ textDecoration: 'none' }}>
 								<Button
 									sx={{
 										display: { xs: 'none', md: 'flex' },

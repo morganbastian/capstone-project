@@ -90,7 +90,7 @@ export const getMe = async () => {
 }
 
 export const createNewBooking = async (bookingData) => {
-	const response = await fetch(`${baseUrl}/booking/new`, {
+	const response = await fetch(`${baseUrl}/bookings/new`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(bookingData),

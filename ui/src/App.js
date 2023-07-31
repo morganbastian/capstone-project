@@ -20,7 +20,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/register/success" element={<Success/>}/>
-          <Route path="/bookings" element={<Booking/>}/>
+          <Route path="/bookings/new" element={<Booking/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>

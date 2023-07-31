@@ -1,65 +1,47 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { Grid, Typography, Box, TextField, Button } from '@mui/material'
 import { createNewBooking } from '../../utility/api'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
-import { debounce } from '@mui/material/utils'
-import { getToken } from '../../utility/utils'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import moment from 'moment'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import { getMe } from '../../utility/api'
 import { isUserLoggedIn } from '../../utility/utils'
-import { getAllBoats } from '../../utility/api'
 
 function Booking(props) {
-
-	const [boatId, setBoatId] = useState({})
-	const [isCompleted, setIsCompleted] = useState()
-	const [passengers, setPassengers] = useState()
+	const [boatId, setBoatId] = useState('')
+	const [passengers, setPassengers] = useState('')
 	const [date, setDate] = useState()
 	const [time, setTime] = useState()
-  const [user, setUser] = useState();
-	const [value, setValue] = useState(null)
-	const [inputValue, setInputValue] = useState('')
-	const [options, setOptions] = useState([])
-	const loaded = useRef(false)
+	const [user, setUser] = useState()
 
-  useEffect(() => {
-    if (isUserLoggedIn()) {
-      const fetchData = async () => {
-        const user = await getMe();
-        setUser(user);
-      };
-      fetchData();
-    }
-  }, []);
-
-  // useEffect(() => {
-  //   const getBoats = async () => {
-  //     const boats = await getAllBoats();
-  //     setBoatId(boats);
-  //     return boats;
-  //   };
-  //   getBoats();
-  // }, []);
- 
+	useEffect(() => {
+		if (isUserLoggedIn()) {
+			const fetchData = async () => {
+				const user = await getMe()
+				setUser(user)
+			}
+			fetchData()
+		}
+	}, [])
 
 	//Function Logic
 	const handleSubmit = async (event) => {
-  const boatId = await getAllBoats();
 		const bookingData = {
-			boatId: boatId.id,
+			boatId: boatId,
 			userId: user.id,
 			passengers: passengers,
-			time: time,
-			date: date,
-			isCompleted: isCompleted,
+			time: time.format('HH:mm:ss'),
+			date: date.format('YYYY-MM-DD'),
+			isCompleted: true,
 		}
+		console.log(bookingData)
 		createNewBooking(bookingData)
 	}
 	if (!user) {
@@ -70,39 +52,45 @@ function Booking(props) {
 			<FormControl fullWidth>
 				<InputLabel id='boat-label'>Choose Your Charter</InputLabel>
 				<Select
+					defaultValue=''
 					labelId='boat-label'
 					id='boatId'
-					label='boatId s'
+					label='boatId'
+					value={boatId}
 					onChange={(e) => setBoatId(e.target.value)}
 				>
-					<MenuItem value={(boatId.id)}>Harbor Cruise</MenuItem>
-					<MenuItem value={(boatId.id)}>Eco-Tour</MenuItem>
+					<MenuItem value={1}>Harbor Cruise</MenuItem>
+					<MenuItem value={2}>Eco-Tour</MenuItem>
 				</Select>
 			</FormControl>
 			<br></br>
 			<br></br>
 			<FormControl fullWidth>
-				<InputLabel id='time-label'>Choose your time slot</InputLabel>
+				<InputLabel id='passengers-label'>How many passengers?</InputLabel>
 				<Select
-					labelId='time-label'
-					id='time'
-					label='time'
-					onChange={(e) => setTime(e.target.value)}
+					labelId='passengers-label'
+					id='passengers'
+					label='passengers'
+					value={passengers}
+					onChange={(e) => setPassengers(e.target.value)}
 				>
-					<MenuItem value={(time)}>1:00PM-4:00PM</MenuItem>
-					<MenuItem value={(time)}>5:00PM-8:00PM</MenuItem>
+					<MenuItem value={1}>1</MenuItem>
+					<MenuItem value={2}>2</MenuItem>
+					<MenuItem value={3}>3</MenuItem>
+					<MenuItem value={4}>4</MenuItem>
+					<MenuItem value={5}>5</MenuItem>
+					<MenuItem value={6}>6</MenuItem>
 				</Select>
 			</FormControl>
 			<br></br>
 			<br></br>
-			<LocalizationProvider dateAdapter={AdapterDayjs}>
-				<DemoContainer components={['DateTimePicker']}>
-					<DateTimePicker
-						label='Basic date time picker'
-						onChange={(event) => setDate(event)}
-					/>
+			<LocalizationProvider dateAdapter={AdapterMoment}>
+				<DemoContainer components={['DatePicker', 'TimePicker']}>
+					<DatePicker value={date} onChange={(event) => setDate(event)} />
+					<TimePicker value={time} onChange={(event) => setTime(event)} />
 				</DemoContainer>
 			</LocalizationProvider>
+			<br></br>
 			<br></br>
 			<Button variant='contained' type='submit' onClick={() => handleSubmit()}>
 				Submit

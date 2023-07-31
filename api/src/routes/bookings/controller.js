@@ -43,7 +43,6 @@ exports.showBookingByUserId = async (req, res) => {
 exports.createNewBooking = async (req, res) => {
 	try {
 		const newBooking = req.body
-		// Only allow admins and account owners to access the user data
 		const booking = await addNewBooking(newBooking)
 		return res.json(booking)
 	} catch (error) {
