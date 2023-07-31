@@ -182,7 +182,7 @@ function Navbar() {
 								onClose={handleCloseUserMenu}
 							>
 								<MenuItem>
-									<Link to='/userpanel' style={{ textDecoration: 'none' }}>
+									<Link to='/userbookings' style={{ textDecoration: 'none' }}>
 										My Bookings
 									</Link>
 								</MenuItem>

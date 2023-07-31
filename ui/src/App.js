@@ -7,6 +7,7 @@ import Booking from './views/Booking'
 import NotFound from './views/NotFound'
 import Layout from './layouts'
 import ThemeContextProvider from './context/themeContext'
+import UserBookings from './views/UserBookings.js'
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/register/success" element={<Success/>}/>
           <Route path="/bookings/new" element={<Booking/>}/>
+          <Route path="/userbookings" element={<UserBookings/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>
