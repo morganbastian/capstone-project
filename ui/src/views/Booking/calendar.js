@@ -7,13 +7,13 @@ import { Box } from '@mui/system'
 function Calendar() {
 	const [loading, setLoading] = useState(false)
 	const [date, setDate] = useState(new Date(new Date().setHours(8, 0, 0, 0)))
+  // const [selectedDate, setSelectedDate] = useState(null)
 	const [days, setDays] = useState([[]])
 	const [appointment, setAppointment] = useState('')
 
-	const modifiers = {
-		disabled: (date) => getDay(date) < date, //disable previous dates
-	}
-
+  const handleDateSelect = (date) => {
+    setDate(date);
+  };
 	useEffect(() => {
 		if (date != null) {
 			console.log('getting appointments')
@@ -105,8 +105,12 @@ function Calendar() {
 
 	return (
 		<Box>
-			<DayPicker date={date} onDateChange={setDate} modifiers={modifiers} />
-			<div>{appointment}</div>
+			<DayPicker 
+      mode="single"
+      selected={date}
+      onSelect={handleDateSelect}
+      />
+      <div>{appointment}</div>
 		</Box>
 	)
 }
