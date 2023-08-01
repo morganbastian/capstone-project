@@ -91,9 +91,8 @@ exports.deleteUserBooking = async (req, res) => {
 	const bookingId = req.params.id
 	try {
 		console.log('bookingId:', bookingId)
-		const bookingData = aBooking(bookingId)
+		const bookingData =  await findBookingById(bookingId)
 		console.log('bookingData:', bookingData)
-		// Only allow admins to access the user list
 		if (req.user.id !== bookingData.userId && req.user.role !== 'admin') {
 			return res
 				.status(403)

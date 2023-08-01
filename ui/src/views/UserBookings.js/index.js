@@ -8,11 +8,11 @@ function UserBookings(props) {
   const [idsToDelete, setIdsToDelete] = useState();
 
   const columns = [
-    { field: "id", headerName: "Booking ID", width: 100, editable: false },
+    { field: "id", headerName: "Booking ID", width: 200, editable: false },
     { field: "boatId", headerName: "Boat", width: 200, editable: false },
     { field: "date", headerName: "Date", width: 200,editable: false},
-    { field: "time", headerName: "Time", width: 130, editable: false },
-    { field: "passengers", headerName: "passengers", width: 130, editable: false },
+    { field: "time", headerName: "Time", width: 200, editable: false },
+    { field: "passengers", headerName: "passengers", width: 200, editable: false },
     
   ];
 
@@ -52,13 +52,13 @@ function UserBookings(props) {
   return (
     <>
       <div style={{ height: 620, width: "100%" }}>
-        <Button
+        {/* <Button
           sx={{ margin: "10px" }}
           variant="contained"
           onClick={handleDeleteUserBookings}
         >
           Delete Selected
-        </Button>
+        </Button> */}
         <DataGrid
           editMode="row"
           rows={rows}
@@ -69,11 +69,11 @@ function UserBookings(props) {
             },
           }}
           pageSizeOptions={[5, 10]}
-          checkboxSelection
+        //   checkboxSelection
         //   processRowUpdate={processRowUpdate}
-          onRowSelectionModelChange={(ids) => {
-            setIdsToDelete(ids);
-          }}
+        //   onRowSelectionModelChange={(ids) => {
+        //     setIdsToDelete(ids);
+        //   }}
         />
       </div>
     </>
