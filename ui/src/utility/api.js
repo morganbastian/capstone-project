@@ -134,7 +134,7 @@ export const getBookingByUserId = async (userId) => {
 	return responseData
 }
 
-export const deleteUserBooking = async (id) => {
+export const deleteBooking = async (id) => {
 	const token = getToken()
 	if (!token) {
 		throw new Error(`Missing User Token`)
@@ -158,8 +158,37 @@ export const deleteUserBooking = async (id) => {
 	return responseData
 }
 
+export const updateBooking = async (data) => {
+	console.log(data)
+	const token = getToken()
+	const response = await fetch(`${baseUrl}/bookings/update/${data.id}`, {
+		method: 'PUT',
+		headers: new Headers({
+			Authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json',
+		}),
+		body: JSON.stringify(data),
+	})
+
+	const responseData = await response.json()
+
+	if (!response.ok) {
+		throw new Error(
+			`Status Code: ${response?.status} - ${responseData?.message}`
+		)
+	}
+
+	return responseData
+}
+
+export const getAllBookings = async () => {
+	const response = await fetch(`${baseUrl}/bookings/`)
+	const responseData = await response.json()
+	return responseData
+}
+
 export const getAllBoats = async () => {
 	const response = await fetch(`${baseUrl}/boats/`)
 	const responseData = await response.json()
 	return responseData
-  }
+}
