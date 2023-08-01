@@ -66,6 +66,7 @@ function AdminPanel(props) {
           pageSizeOptions={[5, 10]}
           checkboxSelection
           processRowUpdate={processRowUpdate}
+          onProcessRowUpdateError={(error) => console.log(error) }
           onRowSelectionModelChange={(ids) => {
             setIdsToDelete(ids);
           }}
