@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { getMe, getBookingByUserId, deleteUserBooking } from "../../utility/api";
+import { getMe, getBookingByUserId, deleteBooking } from "../../utility/api";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 
@@ -32,7 +32,7 @@ function UserBookings(props) {
   const handleDeleteUserBookings = async () => {
   
     Promise.allSettled(idsToDelete.map(async (id) => {
-      return await deleteUserBooking(id)
+      return await deleteBooking(id)
     }))
     .then(async () => {
       const userData = await getMe();

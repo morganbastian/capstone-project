@@ -23,13 +23,13 @@ exports.findAllBookings = async () => {
 	return bookings
 }
 
-exports.modifyUserBookings = async (bookingData, id) => {
+exports.modifyBooking = async (bookingData, id) => {
 	// Insert the user into the database and return
 	console.log(bookingData)
 	return await knex('bookings').update(bookingData).where('id', id) // return the data you need
 }
 
-exports.destroyUseBooking = async (id) => {
-	const deletedUserBooking = await knex('bookings').delete().where('id', id)
-	return deletedUserBooking
+exports.destroyBooking = async (id) => {
+	const deletedBooking = await knex('bookings').delete().where('id', id)
+	return deletedBooking
 }
