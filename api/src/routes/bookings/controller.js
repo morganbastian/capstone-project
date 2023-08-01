@@ -4,8 +4,8 @@ const {
 	findAllBookings,
 	findBookingById,
 	findBookingByUserId,
-	modifyUserBookings,
-	destroyUserBooking,
+	modifyBooking,
+	destroyBooking,
 	addNewBooking,
 } = require('./service')
 
@@ -62,12 +62,12 @@ exports.showAllBookings = async (req, res) => {
 	}
 }
 
-exports.updateUserBookings = async (req, res) => {
+exports.updateBooking = async (req, res) => {
 	const bookingId = req.params.id
 	const newBookingData = req.body
 	console.log('user', req.user)
 	try {
-		const bookingData = aBooking(bookingId)
+		const bookingData = await findBookingById(bookingId)
 
 		// Only allow users to edit their own reports unless the user is an admin
 		if (req.user.id !== bookingData.userId && req.user.role !== 'admin') {
@@ -76,18 +76,18 @@ exports.updateUserBookings = async (req, res) => {
 				.json({ error: 'You do not have permission to access this resource' })
 		}
 
-		const updatedUserBooking = await modifyUserBookings(
+		const updatedBooking = await modifyBooking(
 			newBookingData,
 			bookingId
 		)
-		return res.json(updatedUserBooking)
+		return res.json(updatedBooking)
 	} catch (error) {
 		console.log(error)
 		return res.status(500).json()
 	}
 }
 
-exports.deleteUserBooking = async (req, res) => {
+exports.deleteBooking = async (req, res) => {
 	const bookingId = req.params.id
 	try {
 		console.log('bookingId:', bookingId)
@@ -99,8 +99,8 @@ exports.deleteUserBooking = async (req, res) => {
 				.json({ error: 'You do not have permission to access this resource' })
 		}
 
-		const deletedUserBooking = await destroyUserBooking(bookingId)
-		return res.json(deletedUserBooking)
+		const deletedBooking = await destroyBooking(bookingId)
+		return res.json(deletedBooking)
 	} catch (error) {
 		console.log(error)
 		return res.status(500).json()
