@@ -13,6 +13,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import { getMe } from '../../utility/api'
 import { isUserLoggedIn } from '../../utility/utils'
+import Calendar from './calendar'
 
 function Booking(props) {
 	const [boatId, setBoatId] = useState('')
@@ -49,6 +50,9 @@ function Booking(props) {
 	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
+			<Calendar></Calendar>
+			<br></br>
+			<br></br>
 			<FormControl fullWidth>
 				<InputLabel id='boat-label'>Choose Your Charter</InputLabel>
 				<Select
