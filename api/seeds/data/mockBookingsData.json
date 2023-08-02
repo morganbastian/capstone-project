@@ -5,7 +5,7 @@
 		"passengers": 6,
 		"boatId": 2,
 		"date": "2023-09-01",
-		"time": "14:00",
+		"time": "13:00",
 		"isCompleted": true
 	},
 	{
@@ -14,7 +14,7 @@
 		"passengers": 20,
 		"boatId": 2,
 		"date": "2023-08-01",
-		"time": "14:00",
+		"time": "13:00",
 		"isCompleted": true
 	},
 	{
@@ -59,7 +59,7 @@
 		"passengers": 21,
 		"boatId": 2,
 		"date": "2023-07-15",
-		"time": "14:00",
+		"time": "13:00",
 		"isCompleted": true
 	},
 	{
@@ -68,7 +68,7 @@
 		"passengers": 22,
 		"boatId": 2,
 		"date": "2023-07-25",
-		"time": "14:00",
+		"time": "13:00",
 		"isCompleted": true
 	},
 	{
@@ -86,7 +86,7 @@
 		"passengers": 18,
 		"boatId": 2,
 		"date": "2023-08-10",
-		"time": "14:00",
+		"time": "13:00",
 		"isCompleted": true
 	}
 ]

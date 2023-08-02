@@ -5,20 +5,19 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
-import moment from 'moment'
+import { AppointmentPicker } from 'react-appointment-picker'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { DateCalendar } from '@mui/x-date-pickers'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import { getMe } from '../../utility/api'
 import { isUserLoggedIn } from '../../utility/utils'
-import Calendar from './calendar'
 
 function Booking(props) {
+	const [loading, setLoading] = useState(false)
+	const [date, setDate] = useState(new Date(new Date().setHours(13, 0, 0, 0))) //starts appointments at 1:00PM
+	const [appointment, setAppointment] = useState('')
 	const [boatId, setBoatId] = useState('')
 	const [passengers, setPassengers] = useState('')
-	const [date, setDate] = useState()
 	const [time, setTime] = useState()
 	const [user, setUser] = useState()
 
@@ -32,21 +31,85 @@ function Booking(props) {
 		}
 	}, [])
 
+	useEffect(() => {
+		if (date != null) {
+			console.log('getting appointments')
+			const days = [
+				[
+					{
+						id: 1,
+						number: 1,
+					},
+					{
+						id: 2,
+						number: 2,
+					},
+				],
+			]
+
+			setAppointment(
+				<AppointmentPicker
+					addAppointmentCallback={addAppointmentCallbackContinuousCase}
+					removeAppointmentCallback={removeAppointmentCallbackContinuousCase}
+					initialDay={date}
+					days={days}
+					maxReservableAppointments={1}
+					visible
+					selectedByDefault
+					unitTime={14400800}
+					loading={loading}
+					continuous
+				/>
+			)
+		}
+	}, [date, loading])
+	async function addAppointmentCallbackContinuousCase({
+		addedAppointment: { day, number, time, id },
+		addCb,
+		removedAppointment: params,
+		removeCb,
+	}) {
+		const addedTime = time
+		setTime(addedTime)
+		console.log(addedTime)
+		setLoading(true)
+		if (removeCb) {
+			console.log(
+				`Removed appointment ${params.number}, day ${params.day}, time ${params.time}, id ${params.id}`
+			)
+			removeCb(params.day, params.number)
+		}
+		addCb(day, number, time, id)
+		setLoading(false)
+	}
+
+	async function removeAppointmentCallbackContinuousCase(
+		{ day, number, time, id },
+		removeCb
+	) {
+		setLoading(true)
+		let params = { id, number, day, time }
+		console.log(
+			`Removed appointment ${number}, day ${day}, time ${time}, id ${id}`
+		)
+		removeCb(day, number)
+		setLoading(false)
+	}
 	//Function Logic
 	const handleSubmit = async (event) => {
 		const bookingData = {
 			boatId: boatId,
 			userId: user.id,
 			passengers: passengers,
-			time: time.format('HH:mm:ss'),
-			date: date.format('YYYY-MM-DD'),
+			time: time,
+			date: date,
 			isCompleted: true,
 		}
 		console.log(bookingData)
 		createNewBooking(bookingData)
 	}
 	if (!user) {
-		return <>Loading..</>
+		return <>Please Login</>
 	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
@@ -83,17 +146,28 @@ function Booking(props) {
 					<MenuItem value={6}>6</MenuItem>
 				</Select>
 			</FormControl>
-			<Calendar></Calendar>
-			{/* <br></br>
-			<br></br>
-			<LocalizationProvider dateAdapter={AdapterMoment}>
-				<DemoContainer components={['DatePicker', 'TimePicker']}>
-					<DatePicker value={date} onChange={(event) => setDate(event)} />
-					<TimePicker value={time} onChange={(event) => setTime(event)} />
-				</DemoContainer>
-			</LocalizationProvider> */}
-			<br></br>
-			<br></br>
+			<LocalizationProvider dateAdapter={AdapterDateFns}>
+				<DateCalendar
+					disablePast={true}
+					value={date}
+					onChange={(date) => setDate(date)}
+				/>
+				<Box>
+					<Grid
+						container
+						spacing={0}
+						direction='column'
+						alignItems='center'
+						justifyContent='center'
+						sx={{ minHeight: '20vh' }}
+					>
+						<Grid item xs={3}>
+							{appointment}
+							{console.log(appointment)}
+						</Grid>
+					</Grid>
+				</Box>
+			</LocalizationProvider>
 			<Grid
 				container
 				spacing={0}

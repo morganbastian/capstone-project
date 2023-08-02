@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { getAllTimeslots } from '../../utility/api'
 import { AppointmentPicker } from 'react-appointment-picker'
 import { DayPicker } from 'react-day-picker'
 import { getDay, format } from 'date-fns'
@@ -11,20 +10,15 @@ import { Box } from '@mui/system'
 
 function Calendar() {
 	const [loading, setLoading] = useState(false)
-	const [date, setDate] = useState(new Date(new Date().setHours(8, 0, 0, 0)))
+	const [date, setDate] = useState(new Date(new Date().setHours(13, 0, 0, 0)))
   const [appointment, setAppointment] = useState('')
+  const [time, setTime] = useState()
 
-	// const handleDateSelect = (date) => {
-	// 	setDate(date)
-	// }
 	useEffect(() => {
 		if (date != null) {
 			console.log('getting appointments')
 			const days = [
 				[
-					,
-					null,
-					null,
 					{
 						id: 1,
 						number: 1,
@@ -45,27 +39,24 @@ function Calendar() {
 					maxReservableAppointments={1}
 					visible
 					selectedByDefault
-					unitTime={10800000}
+					unitTime={14400800}
 					loading={loading}
 					continuous
 				/>
 			)
 		}
 	}, [date, loading])
-
-	// useEffect(() => {
-	//   console.log(appointments)
-	//   if (appointments.length > 0) {
-	//     setDays(appointments)
-	//   }
-	// }, [appointments])
-
+	// let clickedTime = addedAppointment
+	// console.log (clickedTime)
 	async function addAppointmentCallbackContinuousCase({
 		addedAppointment: { day, number, time, id },
 		addCb,
 		removedAppointment: params,
 		removeCb,
 	}) {
+		const addedTime = time
+		setTime(addedTime)
+		console.log(addedTime)
 		setLoading(true)
 		if (removeCb) {
 			//await removeAppointment({ params });
@@ -75,7 +66,7 @@ function Calendar() {
 			removeCb(params.day, params.number)
 		}
 
-		//await addAppointment({ id, number, day, time });
+		// await addAppointment({ id, number, day, time });
 		//console.log(error);
 		addCb(day, number, time, id)
 		setLoading(false)
@@ -97,34 +88,30 @@ function Calendar() {
 
 	return (
 		<LocalizationProvider dateAdapter={AdapterDateFns}>
-			<DateCalendar
-				disablePast={true}
-				value={date}
-				onChange={(date) => setDate(date)}
-			/>
-			<Box>
-				<Grid
-					container
-					spacing={0}
-					direction='column'
-					alignItems='center'
-					justifyContent='center'
-					sx={{ minHeight: '20vh' }}
-				>
-					<Grid item xs={3}>
-						{appointment}
+				<DateCalendar
+					disablePast={true}
+					value={date}
+					onChange={(date) => setDate(date)}
+				/>
+				<Box>
+					<Grid
+						container
+						spacing={0}
+						direction='column'
+						alignItems='center'
+						justifyContent='center'
+						sx={{ minHeight: '20vh' }}
+					>
+						<Grid item xs={3}>
+							{appointment}
+							{console.log(appointment)}
+						</Grid>
 					</Grid>
-				</Grid>
-			</Box>
-		</LocalizationProvider>
-		// <Box>
-		// 	<DayPicker
-		//   mode="single"
-		//   selected={date}
-		//   onSelect={handleDateSelect}
-		//   />
-		//   <div>{appointment}</div>
-		// </Box>
+				</Box>
+			</LocalizationProvider>
+			
+		
+		
 	)
 }
 
