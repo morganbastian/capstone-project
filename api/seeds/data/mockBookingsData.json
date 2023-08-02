@@ -5,8 +5,8 @@
 		"passengers": 6,
 		"boatId": 2,
 		"date": "2023-09-01",
-		"time": "13:00",
-		"isCompleted": false
+		"time": "14:00",
+		"isCompleted": true
 	},
 	{
 		"id": 2,
@@ -14,8 +14,8 @@
 		"passengers": 20,
 		"boatId": 2,
 		"date": "2023-08-01",
-		"time": "13:00",
-		"isCompleted": false
+		"time": "14:00",
+		"isCompleted": true
 	},
 	{
 		"id": 3,
@@ -24,7 +24,7 @@
 		"boatId": 2,
 		"date": "2023-10-18",
 		"time": "17:00",
-		"isCompleted": false
+		"isCompleted": true
 	},
 	{
 		"id": 4,
@@ -33,7 +33,7 @@
 		"boatId": 2,
 		"date": "2023-08-19",
 		"time": "17:00",
-		"isCompleted": false
+		"isCompleted": true
 	},
 	{
 		"id": 5,
@@ -42,7 +42,7 @@
 		"boatId": 1,
 		"date": "2023-10-11",
 		"time": "17:00",
-		"isCompleted": false
+		"isCompleted": true
 	},
 	{
 		"id": 6,
@@ -51,7 +51,7 @@
 		"boatId": 2,
 		"date": "2023-09-10",
 		"time": "17:00",
-		"isCompleted": false
+		"isCompleted": true
 	},
 	{
 		"id": 7,
@@ -59,7 +59,7 @@
 		"passengers": 21,
 		"boatId": 2,
 		"date": "2023-07-15",
-		"time": "13:00",
+		"time": "14:00",
 		"isCompleted": true
 	},
 	{
@@ -68,7 +68,7 @@
 		"passengers": 22,
 		"boatId": 2,
 		"date": "2023-07-25",
-		"time": "13:00",
+		"time": "14:00",
 		"isCompleted": true
 	},
 	{
@@ -78,7 +78,7 @@
 		"boatId": 1,
 		"date": "2023-08-11",
 		"time": "17:00",
-		"isCompleted": false
+		"isCompleted": true
 	},
 	{
 		"id": 10,
@@ -86,7 +86,7 @@
 		"passengers": 18,
 		"boatId": 2,
 		"date": "2023-08-10",
-		"time": "13:00",
-		"isCompleted": false
+		"time": "14:00",
+		"isCompleted": true
 	}
 ]

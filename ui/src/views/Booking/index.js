@@ -50,9 +50,6 @@ function Booking(props) {
 	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
-			<Calendar></Calendar>
-			<br></br>
-			<br></br>
 			<FormControl fullWidth>
 				<InputLabel id='boat-label'>Choose Your Charter</InputLabel>
 				<Select
@@ -86,19 +83,35 @@ function Booking(props) {
 					<MenuItem value={6}>6</MenuItem>
 				</Select>
 			</FormControl>
-			<br></br>
+			<Calendar></Calendar>
+			{/* <br></br>
 			<br></br>
 			<LocalizationProvider dateAdapter={AdapterMoment}>
 				<DemoContainer components={['DatePicker', 'TimePicker']}>
 					<DatePicker value={date} onChange={(event) => setDate(event)} />
 					<TimePicker value={time} onChange={(event) => setTime(event)} />
 				</DemoContainer>
-			</LocalizationProvider>
+			</LocalizationProvider> */}
 			<br></br>
 			<br></br>
-			<Button variant='contained' type='submit' onClick={() => handleSubmit()}>
-				Submit
-			</Button>
+			<Grid
+				container
+				spacing={0}
+				direction='column'
+				alignItems='center'
+				justifyContent='center'
+				sx={{ minHeight: '15vh' }}
+			>
+				<Grid item xs={3}>
+					<Button
+						variant='contained'
+						type='submit'
+						onClick={() => handleSubmit()}
+					>
+						Submit
+					</Button>
+				</Grid>
+			</Grid>
 		</Box>
 	)
 }

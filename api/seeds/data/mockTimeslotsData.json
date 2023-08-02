@@ -3,7 +3,7 @@
 		"id": 1,
 		"charterId": 1,
 		"weekDay": "2023-08-10",
-		"startTime": "13:00",
+		"startTime": "14:00",
 		"endTime": "16:00"
 	},
 	{
@@ -24,14 +24,14 @@
 		"id": 4,
 		"charterId": 4,
 		"weekDay": "2023-08-16",
-		"startTime": "13:00",
+		"startTime": "14:00",
 		"endTime": "16:00"
 	},
 	{
 		"id": 5,
 		"charterId": 5,
 		"weekDay": "2023-09-09",
-		"startTime": "13:00",
+		"startTime": "14:00",
 		"endTime": "16:00"
 	},
 	{
@@ -45,7 +45,7 @@
 		"id": 7,
 		"charterId": 7,
 		"weekDay": "2023-10-03",
-		"startTime": "13:00",
+		"startTime": "14:00",
 		"endTime": "16:00"
 	},
 	{

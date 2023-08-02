@@ -192,3 +192,10 @@ export const getAllBoats = async () => {
 	const responseData = await response.json()
 	return responseData
 }
+
+export const getAllTimeslots = async () => {
+	const response = await fetch(`${baseUrl}/timeslots/`)
+	const responseData = await response.json()
+	return responseData
+}
+

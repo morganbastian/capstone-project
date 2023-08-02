@@ -1,49 +1,41 @@
 import { useEffect, useState } from 'react'
+import { getAllTimeslots } from '../../utility/api'
 import { AppointmentPicker } from 'react-appointment-picker'
 import { DayPicker } from 'react-day-picker'
 import { getDay, format } from 'date-fns'
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { Grid } from '@mui/material'
 import { Box } from '@mui/system'
 
 function Calendar() {
 	const [loading, setLoading] = useState(false)
 	const [date, setDate] = useState(new Date(new Date().setHours(8, 0, 0, 0)))
-  // const [selectedDate, setSelectedDate] = useState(null)
-	const [days, setDays] = useState([[]])
-	const [appointment, setAppointment] = useState('')
+  const [appointment, setAppointment] = useState('')
 
-  const handleDateSelect = (date) => {
-    setDate(date);
-  };
+	// const handleDateSelect = (date) => {
+	// 	setDate(date)
+	// }
 	useEffect(() => {
 		if (date != null) {
 			console.log('getting appointments')
 			const days = [
 				[
+					,
+					null,
+					null,
 					{
 						id: 1,
 						number: 1,
-						isReserved: true,
 					},
 					{
 						id: 2,
 						number: 2,
-						isReserved: true,
-					},
-					{
-						id: 3,
-						number: 3,
-					},
-					{
-						id: 4,
-						number: 4,
-						isSelected: true,
-					},
-					{
-						id: 5,
-						number: 5,
 					},
 				],
 			]
+
 			setAppointment(
 				<AppointmentPicker
 					addAppointmentCallback={addAppointmentCallbackContinuousCase}
@@ -53,7 +45,7 @@ function Calendar() {
 					maxReservableAppointments={1}
 					visible
 					selectedByDefault
-					unitTime={3600000}
+					unitTime={10800000}
 					loading={loading}
 					continuous
 				/>
@@ -104,14 +96,35 @@ function Calendar() {
 	}
 
 	return (
-		<Box>
-			<DayPicker 
-      mode="single"
-      selected={date}
-      onSelect={handleDateSelect}
-      />
-      <div>{appointment}</div>
-		</Box>
+		<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<DateCalendar
+				disablePast={true}
+				value={date}
+				onChange={(date) => setDate(date)}
+			/>
+			<Box>
+				<Grid
+					container
+					spacing={0}
+					direction='column'
+					alignItems='center'
+					justifyContent='center'
+					sx={{ minHeight: '20vh' }}
+				>
+					<Grid item xs={3}>
+						{appointment}
+					</Grid>
+				</Grid>
+			</Box>
+		</LocalizationProvider>
+		// <Box>
+		// 	<DayPicker
+		//   mode="single"
+		//   selected={date}
+		//   onSelect={handleDateSelect}
+		//   />
+		//   <div>{appointment}</div>
+		// </Box>
 	)
 }
 
