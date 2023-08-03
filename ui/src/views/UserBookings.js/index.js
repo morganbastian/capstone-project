@@ -1,11 +1,11 @@
-import { useEffect, useState, useCallback } from "react";
-import { getMe, getBookingByUserId, deleteBooking } from "../../utility/api";
+import { useEffect, useState,  } from "react";
+import { getMe, getBookingByUserId } from "../../utility/api";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
+
 
 function UserBookings(props) {
   const [booking, setBooking] = useState();
-  const [idsToDelete, setIdsToDelete] = useState();
+  // const [idsToDelete, setIdsToDelete] = useState();
 
   const columns = [
     { field: "id", headerName: "Booking ID", width: 200, editable: false },
@@ -29,18 +29,18 @@ function UserBookings(props) {
     getUserBookingData();
   }, []);
 
-  const handleDeleteUserBookings = async () => {
+  // const handleDeleteUserBookings = async () => {
   
-    Promise.allSettled(idsToDelete.map(async (id) => {
-      return await deleteBooking(id)
-    }))
-    .then(async () => {
-      const userData = await getMe();
-      const userId = userData.id
-      const bookingData = await getBookingByUserId(userId);
-      setBooking(bookingData);
-    }); 
-  };
+  //   Promise.allSettled(idsToDelete.map(async (id) => {
+  //     return await deleteBooking(id)
+  //   }))
+  //   .then(async () => {
+  //     const userData = await getMe();
+  //     const userId = userData.id
+  //     const bookingData = await getBookingByUserId(userId);
+  //     setBooking(bookingData);
+  //   }); 
+  // };
 
 //   const processRowUpdate = useCallback(async (updatedRow) => {
 //     return await updateUserBookings(updatedRow);

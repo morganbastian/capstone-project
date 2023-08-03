@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Grid, Typography, Box, TextField, Button } from '@mui/material'
+import { Grid, Box, Button } from '@mui/material'
 import { createNewBooking } from '../../utility/api'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -69,9 +69,7 @@ function Booking(props) {
 		removedAppointment: params,
 		removeCb,
 	}) {
-		const addedTime = time
-		setTime(addedTime)
-		console.log(addedTime)
+		setTime(time)
 		setLoading(true)
 		if (removeCb) {
 			console.log(
