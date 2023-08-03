@@ -17,7 +17,7 @@ function UserBookings(props) {
   ];
 
   const rows = booking;
-
+//get the users bookings
   useEffect(() => {
     const getUserBookingData= async () => {
         const userData = await getMe();
@@ -28,7 +28,7 @@ function UserBookings(props) {
     };
     getUserBookingData();
   }, []);
-
+//if I want to add delete later
   // const handleDeleteUserBookings = async () => {
   
   //   Promise.allSettled(idsToDelete.map(async (id) => {
@@ -41,7 +41,7 @@ function UserBookings(props) {
   //     setBooking(bookingData);
   //   }); 
   // };
-
+//if I want to add update later
 //   const processRowUpdate = useCallback(async (updatedRow) => {
 //     return await updateUserBookings(updatedRow);
 //   }, []);

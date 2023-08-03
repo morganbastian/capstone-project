@@ -20,7 +20,7 @@ function Booking(props) {
 	const [passengers, setPassengers] = useState('')
 	const [time, setTime] = useState()
 	const [user, setUser] = useState()
-
+	//fetch user
 	useEffect(() => {
 		if (isUserLoggedIn()) {
 			const fetchData = async () => {
@@ -30,23 +30,23 @@ function Booking(props) {
 			fetchData()
 		}
 	}, [])
-
+	//useEffect for Appointment Picker
 	useEffect(() => {
 		if (date != null) {
-			console.log('getting appointments')
-			const days = [
+			const days =
+				//makes two time slots
 				[
-					{
-						id: 1,
-						number: 1,
-					},
-					{
-						id: 2,
-						number: 2,
-					},
-				],
-			]
-
+					[
+						{
+							id: 1,
+							number: 1,
+						},
+						{
+							id: 2,
+							number: 2,
+						},
+					],
+				]
 			setAppointment(
 				<AppointmentPicker
 					addAppointmentCallback={addAppointmentCallbackContinuousCase}
@@ -66,17 +66,9 @@ function Booking(props) {
 	async function addAppointmentCallbackContinuousCase({
 		addedAppointment: { day, number, time, id },
 		addCb,
-		removedAppointment: params,
-		removeCb,
 	}) {
 		setTime(time)
 		setLoading(true)
-		if (removeCb) {
-			console.log(
-				`Removed appointment ${params.number}, day ${params.day}, time ${params.time}, id ${params.id}`
-			)
-			removeCb(params.day, params.number)
-		}
 		addCb(day, number, time, id)
 		setLoading(false)
 	}
@@ -86,14 +78,11 @@ function Booking(props) {
 		removeCb
 	) {
 		setLoading(true)
-		let params = { id, number, day, time }
-		console.log(
-			`Removed appointment ${number}, day ${day}, time ${time}, id ${id}`
-		)
-		removeCb(day, number)
+		removeCb(day, number, time, id)
 		setLoading(false)
 	}
 	//Function Logic
+	//submit data to the backend ooClick with createNewBooking
 	const handleSubmit = async (event) => {
 		const bookingData = {
 			boatId: boatId,
@@ -105,12 +94,13 @@ function Booking(props) {
 		}
 		console.log(bookingData)
 		createNewBooking(bookingData)
-		if (createNewBooking(bookingData)){
+		if (createNewBooking(bookingData)) {
 			alert('Booking Successful')
 		}
 	}
+	//if no user is found, a message will appear
 	if (!user) {
-		return <>Please Login</>
+		return <div>Please Login</div>
 	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
@@ -123,7 +113,6 @@ function Booking(props) {
 					label='boatId'
 					value={boatId}
 					onChange={(e) => setBoatId(e.target.value)}
-					
 				>
 					<MenuItem value={1}>Harbor Cruise</MenuItem>
 					<MenuItem value={2}>Eco-Tour</MenuItem>
@@ -137,7 +126,6 @@ function Booking(props) {
 					labelId='passengers-label'
 					id='passengers'
 					label='passengers'
-					
 					value={passengers}
 					onChange={(e) => setPassengers(e.target.value)}
 				>
@@ -149,6 +137,7 @@ function Booking(props) {
 					<MenuItem value={6}>6</MenuItem>
 				</Select>
 			</FormControl>
+			{/* calendar */}
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
 				<DateCalendar
 					disablePast={true}
@@ -167,7 +156,6 @@ function Booking(props) {
 					>
 						<Grid item xs={3}>
 							{appointment}
-							{console.log(appointment)}
 						</Grid>
 					</Grid>
 				</Box>
