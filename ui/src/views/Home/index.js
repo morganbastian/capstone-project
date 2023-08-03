@@ -16,10 +16,11 @@ function Home(props) {
 		<Paper>
 			<Box
 				sx={{
+					paddingLeft: '1rem',
+					paddingRight: '1rem',
 					width: '100%',
 					height: 'auto',
 					paddingTop: '1rem',
-					paddingBottom: '1rem',
 				}}
 			>
 				<Typography variant='h5'>Harbor Cruise</Typography>
@@ -51,8 +52,10 @@ function Home(props) {
 				sx={{
 					width: '100%',
 					height: 'auto',
+					paddingLeft: '1rem',
+					paddingRight: '1rem',
 					paddingTop: '1rem',
-					paddingBottom: '1rem',
+					paddingBottom: '25px'
 				}}
 			>
 				<Typography variant='h5'>Eco-Tour</Typography>
