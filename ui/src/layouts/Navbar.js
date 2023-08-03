@@ -15,18 +15,14 @@ import {
 	MenuItem,
 } from '@mui/material'
 
-import {
-	isUserLoggedIn,
-	clearToken,
-} from '../utility/utils'
+import { isUserLoggedIn, clearToken } from '../utility/utils'
 import { getMe } from '../utility/api'
 
 //settings for the profile dropdown
 function Navbar() {
 	const [anchorElNav, setAnchorElNav] = useState(null)
 	const [anchorElUser, setAnchorElUser] = useState(null)
-	const [myData, setMyData] = useState({})
-	
+	const [myData, setMyData] = useState(null)
 
 	useEffect(() => {
 		if (isUserLoggedIn()) {
@@ -37,7 +33,7 @@ function Navbar() {
 			getMyData()
 		}
 	}, [])
-
+	// console.log(myData.role)
 	const isUserAdmin = () => {
 		if (myData.role === 'admin') {
 			return true
@@ -186,13 +182,13 @@ function Navbar() {
 										My Bookings
 									</Link>
 								</MenuItem>
-								{!isUserAdmin ? null : (
+								{isUserAdmin() ? (
 									<MenuItem>
 										<Link to='/adminpanel' style={{ textDecoration: 'none' }}>
 											Admin Panel
 										</Link>
 									</MenuItem>
-								)}
+								) : null}
 								<MenuItem onClick={() => Logout()}>
 									<Link to='/' style={{ textDecoration: 'none' }}>
 										Logout
