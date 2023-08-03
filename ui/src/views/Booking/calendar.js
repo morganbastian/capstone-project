@@ -54,9 +54,9 @@ function Calendar() {
 		removedAppointment: params,
 		removeCb,
 	}) {
-		const addedTime = time
-		setTime(addedTime)
-		console.log(addedTime)
+		
+		setTime(time)
+		
 		setLoading(true)
 		if (removeCb) {
 			//await removeAppointment({ params });
