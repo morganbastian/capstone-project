@@ -8,13 +8,13 @@ exports.findBookingById = async (id) => {
 exports.findBookingByUserId = async (userId) => {
 	const results = await knex('bookings').select('*').where('userId', userId)
 	//format the date and time
-	const formattedData = results.map((item) => {
-		const date = new Date(item.date)
+	const formattedData = results.map((result) => {
+		const date = new Date(result.date)
 		const year = date.getFullYear()
 		const month = String(date.getMonth() + 1).padStart(2, '0')
 		const day = String(date.getDate()).padStart(2, '0')
 		const formattedDate = `${month}-${day}-${year}`
-		let [hours, minutes] = item.time.split(':')
+		let [hours, minutes] = result.time.split(':')
 		hours = Number(hours)
 		const ampm = hours >= 12 ? 'PM' : 'AM'
 		hours = hours % 12
@@ -22,7 +22,7 @@ exports.findBookingByUserId = async (userId) => {
 		const formattedTime = `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`
 
 		return {
-			...item,
+			...result,
 			date: formattedDate,
 			time: formattedTime,
 		}
