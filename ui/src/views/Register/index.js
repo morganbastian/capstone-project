@@ -1,4 +1,10 @@
-import { Grid, Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
 import { register } from '../../utility/api'
 import { setToken } from '../../utility/utils'
 import { useState } from 'react'
@@ -7,7 +13,6 @@ import { useNavigate } from 'react-router-dom'
 function Register(props) {
 	const [userData, setUserdata] = useState({
 		username: '',
-
 		email: '',
 		password: '',
 	})
@@ -64,62 +69,126 @@ function Register(props) {
 			navigate('/register/success')
 		}
 	}
-
 	return (
-		<div>
-			<Grid
-				container
-				spacing={0}
-				direction='column'
-				alignItems='center'
-				justifyContent='center'
-				padding={'20px'}
-				sx={{ border: 'solid black 2px' }}
+		<Container component='main' maxWidth='xs'>
+			<CssBaseline />
+			<Box
+				sx={{
+					marginTop: 8,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					paddingBottom: 10,
+				}}
 			>
-				<form onSubmit={handleSubmit}>
-					<Grid item xs={8}>
-						<label>
-							Username:
-							<input
-								type='text'
-								name='username'
-								value={userData.username}
-								onChange={handleChange}
-							/>
-						</label>
-					</Grid>
-					<Grid item xs={8}>
-						<label>
-							Email:
-							<input
-								type='text'
-								name='email'
-								value={userData.email}
-								onChange={handleChange}
-							/>
-						</label>
-					</Grid>
-					<Grid item xs={8}>
-						<label>
-							Password:
-							<input
-								type='password'
-								name='password'
-								value={userData.password}
-								onChange={handleChange}
-							/>
-						</label>
-					</Grid>
-					<input type='submit' value='Register' />
-				</form>
-				<Grid item xs={8}>
-					{validationErrorArray.map((e) => {
-						return <Typography color={'red'}>{e}</Typography>
-					})}
-				</Grid>
-			</Grid>
-		</div>
+				<Typography component='h1' variant='h5'>
+					Register
+				</Typography>
+				<Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+					<TextField
+						margin='normal'
+						required
+						fullWidth
+						id='username'
+						label='Username'
+						name='username'
+						value={userData.username}
+						onChange={handleChange}
+						autoFocus
+					/>
+					<TextField
+						margin='normal'
+						required
+						fullWidth
+						id='email'
+						label='Email'
+						name='email'
+						value={userData.email}
+						onChange={handleChange}
+						autoFocus
+					/>
+					<TextField
+						margin='normal'
+						required
+						fullWidth
+						name='password'
+						label='Password'
+						type='password'
+						id='password'
+						onChange={handleChange}
+						value={userData.password}
+					/>
+					<Button
+						onSubmit={handleSubmit}
+						type='submit'
+						fullWidth
+						variant='contained'
+						sx={{ mt: 3, mb: 2 }}
+					>
+						Register
+					</Button>
+				</Box>
+			</Box>
+		</Container>
 	)
 }
 
 export default Register
+
+// 		<div>
+// 			<Grid
+// 				container
+// 				spacing={0}
+// 				direction='column'
+// 				alignItems='center'
+// 				justifyContent='center'
+// 				padding={'20px'}
+// 				sx={{ border: 'solid black 2px' }}
+// 			>
+// 				<form onSubmit={handleSubmit}>
+// 					<Grid item xs={8}>
+// 						<label>
+// 							Username:
+// 							<input
+// 								type='text'
+// 								name='username'
+// 								value={userData.username}
+// 								onChange={handleChange}
+// 							/>
+// 						</label>
+// 					</Grid>
+// 					<Grid item xs={8}>
+// 						<label>
+// 							Email:
+// 							<input
+// 								type='text'
+// 								name='email'
+// 								value={userData.email}
+// 								onChange={handleChange}
+// 							/>
+// 						</label>
+// 					</Grid>
+// 					<Grid item xs={8}>
+// 						<label>
+// 							Password:
+// 							<input
+// 								type='password'
+// 								name='password'
+// 								value={userData.password}
+// 								onChange={handleChange}
+// 							/>
+// 						</label>
+// 					</Grid>
+// 					<input type='submit' value='Register' />
+// 				</form>
+// 				<Grid item xs={8}>
+// 					{validationErrorArray.map((e) => {
+// 						return <Typography color={'red'}>{e}</Typography>
+// 					})}
+// 				</Grid>
+// 			</Grid>
+// 		</div>
+// 	)
+// }
+
+// export default Register
