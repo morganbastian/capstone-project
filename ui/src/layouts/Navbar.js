@@ -22,7 +22,7 @@ import { getMe } from '../utility/api'
 function Navbar() {
 	const [anchorElNav, setAnchorElNav] = useState(null)
 	const [anchorElUser, setAnchorElUser] = useState(null)
-	const [myData, setMyData] = useState(null)
+	const [myData, setMyData] = useState({})
 
 	useEffect(() => {
 		if (isUserLoggedIn()) {
