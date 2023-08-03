@@ -135,7 +135,6 @@ function Register(props) {
 
 export default Register
 
-// 	return (
 // 		<div>
 // 			<Grid
 // 				container
