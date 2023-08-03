@@ -33,7 +33,6 @@ function Navbar() {
 			getMyData()
 		}
 	}, [])
-	// console.log(myData.role)
 	const isUserAdmin = () => {
 		if (myData.role === 'admin') {
 			return true

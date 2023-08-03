@@ -107,13 +107,16 @@ function Booking(props) {
 		}
 		console.log(bookingData)
 		createNewBooking(bookingData)
+		if (createNewBooking(bookingData)){
+			alert('Booking Successful')
+		}
 	}
 	if (!user) {
 		return <>Please Login</>
 	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
-			<FormControl fullWidth>
+			<FormControl fullWidth required>
 				<InputLabel id='boat-label'>Choose Your Charter</InputLabel>
 				<Select
 					defaultValue=''
@@ -122,6 +125,7 @@ function Booking(props) {
 					label='boatId'
 					value={boatId}
 					onChange={(e) => setBoatId(e.target.value)}
+					
 				>
 					<MenuItem value={1}>Harbor Cruise</MenuItem>
 					<MenuItem value={2}>Eco-Tour</MenuItem>
@@ -129,12 +133,13 @@ function Booking(props) {
 			</FormControl>
 			<br></br>
 			<br></br>
-			<FormControl fullWidth>
+			<FormControl fullWidth required>
 				<InputLabel id='passengers-label'>How many passengers?</InputLabel>
 				<Select
 					labelId='passengers-label'
 					id='passengers'
 					label='passengers'
+					
 					value={passengers}
 					onChange={(e) => setPassengers(e.target.value)}
 				>
@@ -150,6 +155,7 @@ function Booking(props) {
 				<DateCalendar
 					disablePast={true}
 					value={date}
+					required
 					onChange={(date) => setDate(date)}
 				/>
 				<Box>
