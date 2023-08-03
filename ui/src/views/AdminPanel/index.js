@@ -46,7 +46,7 @@ function AdminPanel(props) {
   }
   return (
     <>
-      <div style={{ height: 620, width: "100%" }}>
+      <div style={{ height:"80%", width: "100%" }}>
         <Button
           sx={{ margin: "10px" }}
           variant="contained"
