@@ -24,15 +24,6 @@ function Navbar() {
 	const [anchorElUser, setAnchorElUser] = useState(null)
 	const [myData, setMyData] = useState({})
 
-	useEffect(() => {
-		if (isUserLoggedIn()) {
-			const getMyData = async () => {
-				const me = await getMe()
-				setMyData(me)
-			}
-			getMyData()
-		}
-	}, [])
 	const isUserAdmin = () => {
 		if (myData.role === 'admin') {
 			return true
@@ -56,11 +47,6 @@ function Navbar() {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null)
 	}
-
-	if (!myData) {
-		return <div>loading...</div>
-	}
-
 	return (
 		<Paper>
 			<AppBar position='static'>
@@ -139,7 +125,6 @@ function Navbar() {
 						</Box>
 						<Box sx={{ flexGrow: 0 }}>
 							<Tooltip>
-								{/* profile avatar on far right side */}
 								{isUserLoggedIn() ? (
 									<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 										<Avatar alt='Profile' />
