@@ -94,9 +94,7 @@ function Booking(props) {
 		}
 		console.log(bookingData)
 		createNewBooking(bookingData)
-		if (createNewBooking(bookingData)) {
-			alert('Booking Successful')
-		}
+		
 	}
 	//if no user is found, a message will appear
 	if (!user) {

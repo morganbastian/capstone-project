@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Home(props) {
 	//** Destructure Props
-
-
+	
 	//** State Variables
 
 	//** Component Logic

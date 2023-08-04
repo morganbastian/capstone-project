@@ -50,7 +50,6 @@ exports.addNewBooking = async (newBooking) => {
 	const formattedTime = `${formattedHour}:${minutes}:${seconds}`
 	newBooking.date = formattedDate
 	newBooking.time = formattedTime
-	console.log(newBooking)
 	const createdBooking = await knex('bookings').insert(newBooking)
 	return createdBooking
 }
