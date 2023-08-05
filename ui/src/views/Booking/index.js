@@ -15,11 +15,23 @@ import { isUserLoggedIn } from '../../utility/utils'
 function Booking(props) {
 	const [loading, setLoading] = useState(false)
 	const [date, setDate] = useState(new Date(new Date().setHours(13, 0, 0, 0))) //starts appointments at 1:00PM
-	const [appointment, setAppointment] = useState('')
+	const [days, setDays] = useState([
+		[
+			{
+				id: 1,
+				number: 1,
+			},
+			{
+				id: 2,
+				number: 2,
+			},
+		],
+	])
 	const [boatId, setBoatId] = useState('')
 	const [passengers, setPassengers] = useState('')
 	const [time, setTime] = useState()
 	const [user, setUser] = useState()
+
 	//fetch user
 	useEffect(() => {
 		if (isUserLoggedIn()) {
@@ -33,34 +45,8 @@ function Booking(props) {
 	//useEffect for Appointment Picker
 	useEffect(() => {
 		if (date != null) {
-			const days =
-				//makes two time slots
-				[
-					[
-						{
-							id: 1,
-							number: 1,
-						},
-						{
-							id: 2,
-							number: 2,
-						},
-					],
-				]
-			setAppointment(
-				<AppointmentPicker
-					addAppointmentCallback={addAppointmentCallbackContinuousCase}
-					removeAppointmentCallback={removeAppointmentCallbackContinuousCase}
-					initialDay={date}
-					days={days}
-					maxReservableAppointments={1}
-					visible
-					selectedByDefault
-					unitTime={14400800}
-					loading={loading}
-					continuous
-				/>
-			)
+			
+			
 		}
 	}, [date, loading])
 	async function addAppointmentCallbackContinuousCase({
@@ -153,7 +139,18 @@ function Booking(props) {
 						sx={{ minHeight: '20vh' }}
 					>
 						<Grid item xs={3}>
-							{appointment}
+						<AppointmentPicker
+					addAppointmentCallback={addAppointmentCallbackContinuousCase}
+					removeAppointmentCallback={removeAppointmentCallbackContinuousCase}
+					initialDay={date}
+					days={days}
+					maxReservableAppointments={1}
+					visible
+					selectedByDefault
+					unitTime={14400800}
+					loading={loading}
+					continuous
+				/>
 						</Grid>
 					</Grid>
 				</Box>
