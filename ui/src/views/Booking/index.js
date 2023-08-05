@@ -8,12 +8,14 @@ import Select from '@mui/material/Select'
 import { AppointmentPicker } from 'react-appointment-picker'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { DateCalendar } from '@mui/x-date-pickers'
+import Alert from '@mui/material/Alert';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { getMe } from '../../utility/api'
 import { isUserLoggedIn } from '../../utility/utils'
 
 function Booking(props) {
 	const [loading, setLoading] = useState(false)
+	const [alert, setAlert] = useState({ show: false, severity: '', message: '' });
 	const [date, setDate] = useState(new Date(new Date().setHours(13, 0, 0, 0))) //starts appointments at 1:00PM
 	const [days, setDays] = useState([
 		[
@@ -68,7 +70,7 @@ function Booking(props) {
 		setLoading(false)
 	}
 	//Function Logic
-	//submit data to the backend ooClick with createNewBooking
+	//submit data to the backend onClick with createNewBooking
 	const handleSubmit = async (event) => {
 		const bookingData = {
 			boatId: boatId,
@@ -78,10 +80,18 @@ function Booking(props) {
 			date: date,
 			isCompleted: true,
 		}
-		console.log(bookingData)
-		createNewBooking(bookingData)
-		
-	}
+		try {
+			const result = await createNewBooking(bookingData);
+			console.log(bookingData)
+			if (result && result.success) {
+				setAlert({ show: true, severity: 'success',message: 'Your booking was successful!' });
+			} else {
+				setAlert({ show: true, severity: 'error', message: result ? result.error : 'An unexpected error occurred.' });
+			}
+		} catch (error) {
+			setAlert({ show: true, severity: 'error', message: 'An unexpected error occurred.' });
+		}
+	};
 	//if no user is found, a message will appear
 	if (!user) {
 		return <div>Please Login</div>
@@ -155,6 +165,11 @@ function Booking(props) {
 					</Grid>
 				</Box>
 			</LocalizationProvider>
+			{alert.show && (
+      <Alert severity={alert.severity}  onClose={() => setAlert({ ...alert, show: false })}>
+        {alert.message}
+      </Alert>
+    )}
 			<Grid
 				container
 				spacing={0}
