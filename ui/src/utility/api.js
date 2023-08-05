@@ -98,10 +98,11 @@ export const createNewBooking = async (bookingData) => {
 
 	const responseData = await response.json()
 	if (!response.ok) {
-		throw new Error(
-			`Status Code: ${response?.status} - ${responseData?.message}`
-		)
-	}
+		return {
+      success: false,
+      error: `Status Code: ${response?.status} - ${responseData?.message}`
+		}
+	} return { success: true}
 }
 
 export const getBookingById = async (id) => {
