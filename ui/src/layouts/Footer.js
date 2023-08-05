@@ -5,7 +5,6 @@ function Footer(props) {
   return (
     <Box
       sx={{
-        position: 'fixed',
         width: '100%',
         height: 'auto',
         paddingTop: '1rem',

@@ -1,18 +1,19 @@
 import { Button, Paper, Typography, Box } from '@mui/material'
 import { Link } from 'react-router-dom'
+import Footer from '../../layouts/Footer'
 
 //** Setup (define helper functions and variables here)
 
 function Home(props) {
 	//** Destructure Props
-	
+
 	//** State Variables
 
 	//** Component Logic
 
 	//** Return JSX
 	return (
-		<Paper>
+		<Paper elevation={0}>
 			<Box
 				sx={{
 					paddingLeft: '1rem',
@@ -54,7 +55,7 @@ function Home(props) {
 					paddingLeft: '1rem',
 					paddingRight: '1rem',
 					paddingTop: '1rem',
-					paddingBottom: '25px'
+					paddingBottom: '25px',
 				}}
 			>
 				<Typography variant='h5'>Eco-Tour</Typography>
@@ -78,6 +79,7 @@ function Home(props) {
 					<Button variant='contained'>Book Now</Button>
 				</Link>
 			</Box>
+			<Footer />
 		</Paper>
 	)
 }
