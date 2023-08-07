@@ -182,6 +182,24 @@ export const updateBooking = async (data) => {
 	return responseData
 }
 
+export const updateBoat = async (data) => {
+	console.log(data)
+	const response = await fetch(`${baseUrl}/boats/update/${data.id}`, {
+		method: 'PUT',
+		body: JSON.stringify(data),
+	})
+
+	const responseData = await response.json()
+
+	if (!response.ok) {
+		throw new Error(
+			`Status Code: ${response?.status} - ${responseData?.message}`
+		)
+	}
+
+	return responseData
+}
+
 export const getAllBoats = async () => {
 	const response = await fetch(`${baseUrl}/boats`, {
 		method: 'GET',
