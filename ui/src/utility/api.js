@@ -182,17 +182,26 @@ export const updateBooking = async (data) => {
 	return responseData
 }
 
+export const getAllBoats = async () => {
+	const response = await fetch(`${baseUrl}/boats`, {
+		method: 'GET',
+	})
+	const responseData = await response.json()
+	if (!response.ok) {
+		throw new Error(
+			`Status Code: ${response?.status} - ${responseData?.message}`
+		)
+	}
+
+	return responseData
+}
+
 export const getAllBookings = async () => {
 	const response = await fetch(`${baseUrl}/bookings/`)
 	const responseData = await response.json()
 	return responseData
 }
 
-export const getAllBoats = async () => {
-	const response = await fetch(`${baseUrl}/boats/`)
-	const responseData = await response.json()
-	return responseData
-}
 
 export const getAllTimeslots = async () => {
 	const response = await fetch(`${baseUrl}/timeslots/`)

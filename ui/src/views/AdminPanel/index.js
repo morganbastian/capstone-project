@@ -59,7 +59,7 @@ function AdminPanel(props) {
 			>
 				Delete Selected
 			</Button>
-			<Link to="/fleetmanagement">
+			<Link to="/adminpanel/fleetmanagement">
 			<Button
 			sx={{ margin: '10px' }}
 			variant='contained'>

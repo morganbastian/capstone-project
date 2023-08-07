@@ -9,6 +9,7 @@ import Layout from './layouts'
 import ThemeContextProvider from './context/themeContext'
 import UserBookings from './views/UserBookings.js'
 import AdminPanel from './views/AdminPanel'
+import FleetManagement from './views/AdminPanel/FleetManagement'
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/bookings/new" element={<Booking/>}/>
           <Route path="/userbookings" element={<UserBookings/>}/>
           <Route path="/adminpanel" element={<AdminPanel/>}/>
+          <Route path="/adminpanel/fleetmanagement" element={<FleetManagement/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>

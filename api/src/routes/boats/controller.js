@@ -7,7 +7,7 @@ exports.getAllBoats = async (req, res) => {
     const foundBoats = await findAllBoats()
 
     if (!foundBoats) {
-      return res.status(404).json("No User Found")
+      return res.status(404).json("No Boat Found")
     }
 
     return res.json(foundBoats)
