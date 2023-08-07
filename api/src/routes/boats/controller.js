@@ -18,8 +18,9 @@ exports.getAllBoats = async (req, res) => {
 
 exports.updateBoat = async (req, res) => {
 	const boatId = req.params.id
+  console.log('boatId: ', boatId)
 	const newBoatData = req.body
-	console.log('user', req.user)
+  console.log(newBoatData)
 	try {
       const updatedBoat = await modifyBoat(
 			newBoatData,

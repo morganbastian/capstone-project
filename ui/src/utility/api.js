@@ -186,6 +186,7 @@ export const updateBoat = async (data) => {
 	console.log(data)
 	const response = await fetch(`${baseUrl}/boats/update/${data.id}`, {
 		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data),
 	})
 

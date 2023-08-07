@@ -8,7 +8,7 @@ exports.findAllBoats = async (id) => {
 exports.modifyBoat = async (boatData, id) => {
 	// Insert the user into the database and return
 	console.log(boatData)
-	return await knex('bookings').update(boatData).where('id', id) // return the data you need
+	return await knex('boats').update(boatData).where('id', id) // return the data you need
 }
 
 exports.findBoatById = async (id) => {
