@@ -6,7 +6,6 @@ import {
 	Box,
 	Toolbar,
 	IconButton,
-	Typography,
 	Menu,
 	Container,
 	Avatar,
@@ -64,27 +63,19 @@ function Navbar() {
 			<AppBar position='static'>
 				<Container maxWidth='xl'>
 					<Toolbar disableGutters>
-						{/* linked the iWitness text to the homepage */}
 						<Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
-							<Typography
-								variant='h6'
-								noWrap
-								component='a'
-								href='/'
+							<Box
+								component='img'
 								sx={{
-									mr: 2,
-									display: { xs: 'none', md: 'flex' },
-									fontFamily: 'monospace',
-									fontWeight: 700,
-									letterSpacing: '.3rem',
-									color: 'inherit',
-									textDecoration: 'none',
+									height: 75,
+									width: 150,
 								}}
-							>
-								Shem Creek Charter Co
-							</Typography>
+								alt='Logo'
+								src={
+									'https://images.squarespace-cdn.com/content/v1/63f4000e8a3d7c5e96d42603/944d390d-de90-4a16-a0e6-f97140b00a90/Sccco1.jpg?format=1500w'
+								}
+							/>
 						</Link>
-
 						<Box
 							sx={{
 								flexGrow: 1,

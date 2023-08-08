@@ -13,7 +13,11 @@ function Home(props) {
 
 	//** Return JSX
 	return (
-		<Paper elevation={0}>
+		<Paper elevation={0} >
+		<div style={{ background: '#f3e9ca'}}>
+      <img src="https://i.ibb.co/dBBdHMb/SCC14.jpg" alt="Harbor Cruise" style={{ width: '50%', height: 300 }}/>
+			<img src="https://i.ibb.co/ph4fykd/IMG-0807.jpg" alt="Pleasant Lady"  style={{ width: '50%', height: 300 }}/>
+    </div>
 			<Box
 				sx={{
 					paddingLeft: '1rem',
@@ -21,9 +25,11 @@ function Home(props) {
 					width: '100%',
 					height: 'auto',
 					paddingTop: '1rem',
+					background: '#f3e9ca'
+					
 				}}
 			>
-				<Typography variant='h5'>Harbor Cruise</Typography>
+				<Typography variant='h5'><strong>Harbor Cruise</strong></Typography>
 				<Typography variant='h6'>
 					Welcome aboard the Pleasant Lady - a luxurious sixty-foot 1979
 					converted fishing boat, renovated into a one-of-a-kind harbor cruiser.
@@ -45,9 +51,14 @@ function Home(props) {
 					to='/bookings/new'
 					style={{ textDecoration: 'none', color: 'white' }}
 				>
-					<Button variant='contained'>Book Now</Button>
+					<Button variant='contained' sx={{marginTop: 3}}>Book Now</Button>
 				</Link>
 			</Box>
+			<div style={{paddingTop: 25, background: '#f3e9ca' }}>
+      <img src="https://stpetepier.org/wp-content/uploads/2022/06/ctb-0775-june-2022-blog-tour-boat-main-1200x768-1.jpg" alt="Eco-Tour" style={{ width: '50%', height: 300 }}/>
+			<img src="https://lowcountrywatersports.com/wp-content/uploads/2023/05/IMG_9794.jpg" alt="Dolphins" style={{ width: '50%', height: 300 }}/>
+
+    </div>
 			<Box
 				sx={{
 					width: '100%',
@@ -56,9 +67,10 @@ function Home(props) {
 					paddingRight: '1rem',
 					paddingTop: '1rem',
 					paddingBottom: '25px',
+					background: '#f3e9ca'
 				}}
 			>
-				<Typography variant='h5'>Eco-Tour</Typography>
+				<Typography variant='h5'><strong>Eco-Tour</strong></Typography>
 				<Typography variant='h6'>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin turpis
 					mauris, fringilla quis malesuada at, vestibulum a tellus. Donec ornare
@@ -76,7 +88,7 @@ function Home(props) {
 					to='/bookings/new'
 					style={{ textDecoration: 'none', color: 'white' }}
 				>
-					<Button variant='contained'>Book Now</Button>
+					<Button variant='contained' sx={{marginTop: 3}}>Book Now</Button>
 				</Link>
 			</Box>
 			<Footer />
