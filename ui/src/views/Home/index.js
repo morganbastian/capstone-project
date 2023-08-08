@@ -54,7 +54,8 @@ function Home(props) {
 					experience Charleston. With its boutique flair and personalized
 					service, you're guaranteed to have a charter boat experience like no
 					other! Book your next experience with Shem Creek Charter Company, and
-					get ready to see Charleston in a whole new light!
+					get ready to see Charleston in a whole new light! A Harbor Cruise is 3 hours 
+					if relaxation on the water!
 				</Typography>
 				<Link
 					to='/bookings/new'
@@ -99,7 +100,8 @@ function Home(props) {
 					experience that fosters appreciation for both the environment and
 					local culture. Whether it's observing playful dolphins or uncovering
 					hidden marshlands, this unique tour promotes a harmonious connection
-					between nature and tourism.
+					between nature and tourism. Each Eco-Tour is 3 hours of sight-seeing 
+					adventure.
 				</Typography>
 				<Link
 					to='/bookings/new'
