@@ -46,9 +46,10 @@ function FleetManagement(props) {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<CssBaseline />
-			<Typography component='h1' variant='h5'>
+			<Typography component='h1' variant='h5' sx={{paddingBottom: 2, paddingTop: 2}}>
 				Fleet Management
-			</Typography>
+			</Typography >
+			
 			<select onChange={(e) => setSelectedBoat(boats[e.target.value])}>
 				{boats.map((boat, index) => (
 					<option value={index} key={boat.id}>
@@ -58,16 +59,20 @@ function FleetManagement(props) {
 			</select>
 			<br></br>
 			<br></br>
-			<Typography variant='h6'>{selectedBoat.name}</Typography>
+			<Typography variant='h6'>Boat: <strong>{selectedBoat.name}</strong></Typography>
+			<br></br>
 			<Typography variant='h6'>
-				Last serviced: {selectedBoat.serviceDate}
+				Last serviced: <strong>{selectedBoat.serviceDate}</strong>
 			</Typography>
+			<br></br>
 			<Typography variant='h6'>
-				Service notes: {selectedBoat.serviceNotes}
+				Service notes: <strong>{selectedBoat.serviceNotes}</strong>
 			</Typography>
+			<br></br>
 			<Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 				<LocalizationProvider dateAdapter={AdapterDateFns}>
 					<Typography variant='h6'>Update service info:</Typography>
+					<br></br>
 					<DatePicker
 						label='Serviced on'
 						value={parseISO(newDate)}
@@ -75,7 +80,9 @@ function FleetManagement(props) {
 					/>
 					{console.log('newDate:', newDate)}
 				</LocalizationProvider>
+				
 				<TextField
+				sx= {{paddingTop: 2}}
 					id='note'
 					label='Service Notes'
 					multiline
