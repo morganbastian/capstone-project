@@ -12,7 +12,7 @@ function UserBookings(props) {
     { field: "boatId", headerName: "Boat", width: 200, editable: false },
     { field: "date", headerName: "Date", width: 200,editable: false},
     { field: "time", headerName: "Time", width: 200, editable: false },
-    { field: "passengers", headerName: "passengers", width: 200, editable: false },
+    { field: "passengers", headerName: "Passengers", width: 200, editable: false },
     
   ];
 

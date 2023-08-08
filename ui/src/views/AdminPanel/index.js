@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { getAllBookings, deleteBooking, updateBooking } from '../../utility/api'
+import { Link } from 'react-router-dom'
 import { DataGrid } from '@mui/x-data-grid'
 import { Button } from '@mui/material'
 
@@ -58,6 +59,13 @@ function AdminPanel(props) {
 			>
 				Delete Selected
 			</Button>
+			<Link to="/adminpanel/fleetmanagement">
+			<Button
+			sx={{ margin: '10px' }}
+			variant='contained'>
+				Fleet Management 
+			</Button>
+			</Link>
 			<DataGrid
 				editMode='row'
 				rows={rows}
