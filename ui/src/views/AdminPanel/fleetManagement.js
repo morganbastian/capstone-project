@@ -4,6 +4,10 @@ import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
@@ -46,20 +50,34 @@ function FleetManagement(props) {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<CssBaseline />
-			<Typography component='h1' variant='h5' sx={{paddingBottom: 2, paddingTop: 2}}>
+			<Typography
+				align='center'
+				component='h1'
+				variant='h5'
+				sx={{ paddingBottom: 3, paddingTop: 2 }}
+			>
 				Fleet Management
-			</Typography >
-			
-			<select onChange={(e) => setSelectedBoat(boats[e.target.value])}>
-				{boats.map((boat, index) => (
-					<option value={index} key={boat.id}>
-						{boat.name}
-					</option>
-				))}
-			</select>
+			</Typography>
+
+			<FormControl fullWidth sx={{ marginBottom: 2 }}>
+				<InputLabel id='boat-select-label'>Select Boat</InputLabel>
+				<Select
+					labelId='boat-select-label'
+					value={selectedBoat ? boats.indexOf(selectedBoat) : ''}
+					onChange={(e) => setSelectedBoat(boats[e.target.value])}
+					label='Select Boat'
+				>
+					{boats.map((boat, index) => (
+						<MenuItem value={index} key={boat.id}>
+							{boat.name}
+						</MenuItem>
+					))}
+				</Select>
+			</FormControl>
 			<br></br>
-			<br></br>
-			<Typography variant='h6'>Boat: <strong>{selectedBoat.name}</strong></Typography>
+			<Typography variant='h6'>
+				Boat: <strong>{selectedBoat.name}</strong>
+			</Typography>
 			<br></br>
 			<Typography variant='h6'>
 				Last serviced: <strong>{selectedBoat.serviceDate}</strong>
@@ -70,7 +88,9 @@ function FleetManagement(props) {
 			</Typography>
 			<br></br>
 			<Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-				<LocalizationProvider dateAdapter={AdapterDateFns}>
+				<LocalizationProvider
+					dateAdapter={AdapterDateFns}
+				>
 					<Typography variant='h6'>Update service info:</Typography>
 					<br></br>
 					<DatePicker
@@ -80,9 +100,9 @@ function FleetManagement(props) {
 					/>
 					{console.log('newDate:', newDate)}
 				</LocalizationProvider>
-				
+
 				<TextField
-				sx= {{paddingTop: 2}}
+					sx={{ paddingTop: 2 }}
 					id='note'
 					label='Service Notes'
 					multiline
