@@ -11,8 +11,17 @@ const theme = createTheme({
     secondary: {
       main: '#a4cae0',
     },
+    background: {
+      default: '#f3e9ca',
+    },
+  },
+    typography: {
+      fontFamily: 'Oswald',
+    },
+    
+    
   }
-})
+)
 
 
 const ThemeContextProvider = (props) => {

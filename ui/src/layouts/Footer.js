@@ -9,6 +9,7 @@ function Footer(props) {
         height: 'auto',
         paddingTop: '1rem',
         paddingBottom: '1rem',
+        background: '#f3e9ca'
       }}
     >
       <Container maxWidth='lg'>
