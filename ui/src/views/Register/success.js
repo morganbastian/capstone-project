@@ -1,11 +1,12 @@
-import { Paper } from '@mui/material'
+import { Alert} from '@mui/material'
 
-function Success (props) {
+
+function Success(props) {
   return (
-    <Paper>
-      Registration Successful!
-    </Paper>
-  )
+    <Alert severity="success" variant="filled" >
+      Registration Successful! Please Log In!
+    </Alert>
+  );
 }
 
-export default Success
+export default Success;
