@@ -64,31 +64,27 @@ function FleetManagement(props) {
 			<Typography component='h1' variant='h5'>
 				Fleet Management
 			</Typography>
+			
+				<select onChange={(e) => setSelectedBoat(boats[e.target.value])}>
+      {boats.map((boat, index) => (
+        <option value={index} key={boat.id}>
+          {boat.name}
+        </option>
+      ))}
+    </select>
+			<br></br>
+			<br></br>
+			<Typography variant='h6'>{selectedBoat.name}</Typography>
+			<Typography variant='h6'>
+				Last serviced: {selectedBoat.serviceDate}
+			</Typography>
+			<Typography variant='h6'>
+				Service due on: {selectedBoat.serviceDate}
+			</Typography>
+			<Typography variant='h6'>
+				Service notes: {selectedBoat.serviceNotes}
+			</Typography>
 			<Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-				<select
-					onChange={(e) => setSelectedBoat(boats[e.target.value])}
-					value={selectedBoat}
-				>
-					<option value='' disabled>
-						Choose A Boat
-					</option>
-					{boats.map((boat, index) => (
-						<option value={index} key={boat.id}>
-							{boat.name}
-						</option>
-					))}
-				</select>
-				<br></br>
-				<Typography variant='h6'>{selectedBoat.name}</Typography>
-				<Typography variant='h6'>
-					Last serviced: {selectedBoat.serviceDate}
-				</Typography>
-				<Typography variant='h6'>
-					Service due on: {selectedBoat.serviceDate}
-				</Typography>
-				<Typography variant='h6'>
-					Service notes: {selectedBoat.serviceNotes}
-				</Typography>
 				<LocalizationProvider dateAdapter={AdapterDateFns}>
 					<Typography variant='h6'>Update service info:</Typography>
 					<DatePicker
@@ -107,6 +103,7 @@ function FleetManagement(props) {
 				/>
 				{console.log('note: ', note)}
 				<Button
+					onSubmit={handleSubmit}
 					type='submit'
 					fullWidth
 					variant='contained'
