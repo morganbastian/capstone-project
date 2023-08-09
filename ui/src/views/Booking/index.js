@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Grid, Box, Button } from '@mui/material'
+import { Grid, Box, Button, TextField, Typography } from '@mui/material'
 import { createNewBooking } from '../../utility/api'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -89,12 +89,19 @@ function Booking(props) {
 				setAlert({ show: true, severity: 'error', message: result ? result.error : 'An unexpected error occurred.' });
 			}
 		} catch (error) {
-			setAlert({ show: true, severity: 'error', message: 'An unexpected error occurred.' });
+			setAlert({ show: true, severity: 'error', message: 'Please complete form before submitting.' });
 		}
 	};
 	//if no user is found, a message will appear
 	if (!user) {
-		return <div>Please Login</div>
+		return  <Box
+		display="flex"
+		justifyContent="center"
+		alignItems="center"
+		minHeight="10px"
+	>
+		<Typography align='center'>Please Login to Book</Typography>
+	</Box>
 	}
 	return (
 		<Box sx={{ width: '500', height: '300', padding: '20px' }}>
